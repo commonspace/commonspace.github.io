@@ -54,6 +54,6 @@ function setDate() {
 	loadEvents();
 }
 function init(){
-	setInterval(setDate, 60000);
+	setInterval(setDate, 1800000);
 	setDate();
 }
