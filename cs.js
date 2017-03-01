@@ -19,7 +19,7 @@ function loadEvents(){
 	    				var edt = new Date(evt.time);
 
 	    				if (curr != "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear()) {
-	    					var dtp = edt.split(" ");
+	    					var dtp = edt.toString().split(" ");
 							var dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
 	    					$("#events").append("<div class='date'>" + dts + "</div>")
 	    				}
