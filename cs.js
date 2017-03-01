@@ -1,7 +1,9 @@
 $(document).ready(init);
 
 function loadEvents(){
-	$.get({
+	$.ajax({
+		method: "GET",
+		dataType: "json",
 		url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true",
 		success:function(data){
 			debugger;
