@@ -18,10 +18,11 @@ function loadEvents(){
 	    			if (evt.time > tt && evt.time <= wt) {
 	    				var edt = new Date(evt.time);
 
-	    				if (curr != "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear()) {
+	    				if (curr != ("" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear())) {
 	    					var dtp = edt.toString().split(" ");
 							var dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
 	    					$("#events").append("<div class='date'>" + dts + "</div>")
+	    					curr = "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear();
 	    				}
 
 	    				var ts = edt.getHours() + ":" + edt.getMinutes();
