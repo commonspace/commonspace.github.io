@@ -8,14 +8,25 @@ function loadEvents(){
 	    success: function(data) { 
 	    	var now = new Date();
 	    	var ticks = now.getTime();
+	    	var curr = "";
 	    	if (data && data.results && data.results.length > 0) {
 	    		for (var i=0;i<data.results.length;i++) {
 	    			var evt = data.results[i];
 	    			var title = evt.name;
 	    			var tt = ticks - 1800000;
-	    			if (evt.time > tt) {
+	    			var wt = ticks + 604800000;
+	    			if (evt.time > tt && evt.time <= wt) {
 	    				var edt = new Date(evt.time);
-	    				$("#events").append("<div class='event'><div class='evt_time'>" + edt + "</div><div class='evt_name'>" + title + "</div></div>");
+
+	    				if (curr != "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear()) {
+	    					var dtp = edt.split(" ");
+							var dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
+	    					$("#events").append("<div class='date'>" + dts + "</div>")
+	    				}
+
+	    				var ts = edt.getHours() + ":" + edt.getMinutes();
+	    				
+	    				$("#events").append("<div class='event'><div class='evt_time'>" + ts + "</div><div class='evt_name'>" + title + "</div></div>");
 	    			}
 	    		}
 	    	}
