@@ -63,7 +63,7 @@ body {
 }
 
 #contents {
-    margin: 0px auto 0 auto;
+    margin: 100px auto 0 auto;
     width: 100%;
     box-sizing: border-box;
     padding:0 40px;
@@ -109,16 +109,17 @@ body {
 	box-sizing: border-box;
 	width:30%;
 	float:left;
-	font-size: 22px;
+	font-size: 24px;
+	padding-left:50px;
 	text-transform: uppercase;
 	color:rgba(255,255,255,0.5);
 }
 .tenant .name .title {
-	font-size:32px;
+	font-size:36px;
 	float:right;
 	width:70%;
 	box-sizing: border-box;
-	line-height: 32px;
+	line-height: 38px;
 }
 .tenant .name .title small {
 	color:rgba(255,255,255,0.6);
