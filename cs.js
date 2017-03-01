@@ -26,9 +26,14 @@ function loadEvents(){
 	    					curr = "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear();
 	    				}
 
-	    				var ts = edt.getHours() + ":" + edt.getMinutes();
+	    				var h = edt.getHours();
+	    				var ap = (h < 12) ? "am" : "pm";
+	    				h = (h > 12) ? 12-h : h;
+	    				var m = edt.getMinutes();
+	    				m = (m < 10) ? "0" + m : m;
+	    				var ts = h + ":" + m + " " + ap;
 	    				
-	    				$("#events").append("<div class='event'><div class='evt_time'>" + ts + "</div><div class='evt_name'>" + title + "</div></div>");
+	    				$("#events").append("<div class='event clearfix'><div class='evt_time'>" + ts + "</div><div class='evt_name'>" + title + "</div></div>");
 	    			}
 	    		}
 	    	}
