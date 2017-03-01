@@ -1,14 +1,27 @@
 $(document).ready(init);
 
 function loadEvents(){
+	$("#events").empty();
 	$.ajax({ 
 	    type:"GET", // GET = requesting data
 	    url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true", 
 	    success: function(data) { 
-	    	debugger;
+	    	var now = new Date();
+	    	var ticks = now.getTime();
+	    	if (data && data.results && data.results.length > 0) {
+	    		for (var i=0;i<data.results.length;i++) {
+	    			var evt = data.results[i];
+	    			var title = evt.name;
+	    			var tt = ticks - 1800000;
+	    			if (evt.time > tt) {
+	    				var edt = new Date(evt.time);
+	    				$("#events").append("<div class='event'><div class='evt_time'>" + edt + "</div><div class='evt_name'>" + title + "</div></div>");
+	    			}
+	    		}
+	    	}
 	    },
 	    error: function(error, foo) {
-	    	debugger;
+
 	    },
 	    dataType: 'jsonp'
 	  });
