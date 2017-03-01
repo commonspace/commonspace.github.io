@@ -1,17 +1,17 @@
 $(document).ready(init);
 
 function loadEvents(){
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true",
-		success:function(data){
-			debugger;
-		},
-		error:function(error){
-			debugger
-		}
-	});
+	$.ajax({ 
+	    type:"GET", // GET = requesting data
+	    url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true", 
+	    success: function(data) { 
+	    	debugger;
+	    },
+	    error: function(error, foo) {
+	    	debugger;
+	    },
+	    dataType: 'jsonp'
+	  });
 }
 
 function setDate() {
