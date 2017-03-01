@@ -28,7 +28,7 @@ function loadEvents(){
 
 	    				var h = edt.getHours();
 	    				var ap = (h < 12) ? "am" : "pm";
-	    				h = (h > 12) ? 12-h : h;
+	    				h = (h > 12) ? h-12 : h;
 	    				var m = edt.getMinutes();
 	    				m = (m < 10) ? "0" + m : m;
 	    				var ts = h + ":" + m + " " + ap;
