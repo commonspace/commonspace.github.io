@@ -1,7 +1,7 @@
 $(document).ready(init);
 
 function loadEvents(){
-	$("#events").empty();
+	$("#events .event").remove();
 	$.ajax({ 
 	    type:"GET", // GET = requesting data
 	    url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true", 
