@@ -185,3 +185,22 @@ body {
     font-size: 24px;
 }
 
+#right .event {
+	font-size: 18px;
+}
+#right .event .evt_time {
+	float:left;
+	width:30%;
+	text-align: right;
+	box-sizing: border-box;
+	margin-right: 10px;
+	color:#666;
+}
+#right .event .evt_name {
+	float:left;
+	width:70%;
+	text-align: left;
+	box-sizing: border-box;
+	font-size: 24px
+}
+
