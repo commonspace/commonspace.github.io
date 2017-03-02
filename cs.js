@@ -1,8 +1,6 @@
 $(document).ready(init);
 
 function loadEvents(){
-	$("#events .event").remove();
-	$("#events .date").remove();
 	$.ajax({ 
 	    type:"GET", // GET = requesting data
 	    url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true", 
@@ -11,6 +9,8 @@ function loadEvents(){
 	    	var ticks = now.getTime();
 	    	var curr = "";
 	    	if (data && data.results && data.results.length > 0) {
+    			$("#events .event, #events .date").fadeOut("slow", function(){ $("#events .event, #events .date").remove(); });
+
 	    		for (var i=0;i<data.results.length;i++) {
 	    			var evt = data.results[i];
 	    			var title = evt.name;
@@ -59,7 +59,7 @@ function rebuild() {
 function mins(m) { return m * 60 * 1000; }
 function hrs(h) { return mins(h * 60); }
 function init(){
-	setInterval(setDate, mins(30));
-	setInterval(rebuild, 30000);
+	setInterval(setDate, mins(15));
+	setInterval(rebuild, hrs(4));
 	setDate();
 }
