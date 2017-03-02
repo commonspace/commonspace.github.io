@@ -53,7 +53,13 @@ function setDate() {
 	$("#header #dt").html(dts);
 	loadEvents();
 }
+function rebuild() {
+	location.reload(true);
+}
+function mins(m) { return m * 60 * 1000; }
+function hrs(h) { return mins(h * 60); }
 function init(){
-	setInterval(setDate, 1800000);
+	setInterval(setDate, mins(30));
+	setInterval(rebuild, hrs(4));
 	setDate();
 }
