@@ -14,9 +14,8 @@
 				var dt = new Date();
 				console.log("loading script...");
 				$.ajax({
-				  url: "cs.js?dt=" + dt.getTime(),
-				  dataType: "script",
-				  //success: success
+				  url: "cs.js",
+				  dataType: "script"
 				});
 				console.log("loadging css...");
 				$("<link/>", {
