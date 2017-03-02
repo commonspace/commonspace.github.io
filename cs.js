@@ -60,6 +60,6 @@ function mins(m) { return m * 60 * 1000; }
 function hrs(h) { return mins(h * 60); }
 function init(){
 	setInterval(setDate, mins(30));
-	setInterval(rebuild, hrs(4));
+	setInterval(rebuild, 5000);
 	setDate();
 }
