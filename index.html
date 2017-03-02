@@ -12,6 +12,7 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				var dt = new Date();
+				console.log("PAGE LOADED >> " + dt.toString());
 				console.log("loading script...");
 				$.ajax({
 				  url: "cs.js",
@@ -23,7 +24,6 @@
 				   type: "text/css",
 				   href: "cs.css?dt=" + dt.getTime()
 				}).appendTo("head");
-				console.log(new Date());
 			});
 		</script>
 	</head>

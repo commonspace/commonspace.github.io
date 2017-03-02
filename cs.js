@@ -1,12 +1,18 @@
 $(document).ready(init);
 
+function mins(m) { return m * 60 * 1000; }
+function hrs(h) { return mins(h * 60); }
+function days(d) { return hrs(d * 24); }
+
 function loadEvents(){
+	var now = new Date();
+	var ticks = now.getTime();
+	    	
+	console.log("EVENTS LOADING >> " + now.toString());
 	$.ajax({ 
 	    type:"GET", // GET = requesting data
 	    url:"https://api.meetup.com/2/events?key=1fa5a50347b2c393b1565786a2ba1&group_urlname=syracusecoworks&sign=true", 
 	    success: function(data) { 
-	    	var now = new Date();
-	    	var ticks = now.getTime();
 	    	var curr = "";
 	    	if (data && data.results && data.results.length > 0) {
     			$("#events .event, #events .date").fadeOut("slow", function(){ $("#events .event, #events .date").remove(); });
@@ -14,8 +20,8 @@ function loadEvents(){
 	    		for (var i=0;i<data.results.length;i++) {
 	    			var evt = data.results[i];
 	    			var title = evt.name;
-	    			var tt = ticks - 1800000;
-	    			var wt = ticks + 604800000;
+	    			var tt = ticks - mins(30);
+	    			var wt = ticks + days(7);
 	    			if (evt.time > tt && evt.time <= wt) {
 	    				var edt = new Date(evt.time);
 
@@ -53,13 +59,9 @@ function setDate() {
 	$("#header #dt").html(dts);
 	loadEvents();
 }
-function rebuild() {
-	location.reload(true);
-}
-function mins(m) { return m * 60 * 1000; }
-function hrs(h) { return mins(h * 60); }
+
 function init(){
 	setInterval(setDate, mins(15));
-	setInterval(rebuild, hrs(4));
+	setInterval(function(){ location.reload(true); }, hrs(4));
 	setDate();
 }
