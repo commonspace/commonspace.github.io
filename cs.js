@@ -15,33 +15,34 @@ function loadEvents(){
 	    success: function(data) { 
 	    	var curr = "";
 	    	if (data && data.results && data.results.length > 0) {
-    			$("#events .event, #events .date").fadeOut("slow", function(){ $("#events .event, #events .date").remove(); });
+    			$("#events .event, #events .date").fadeOut("slow", function(){ 
+    				$("#events .event, #events .date").remove(); 
+    				for (var i=0;i<data.results.length;i++) {
+		    			var evt = data.results[i];
+		    			var title = evt.name;
+		    			var tt = ticks - mins(30);
+		    			var wt = ticks + days(7);
+		    			if (evt.time > tt && evt.time <= wt) {
+		    				var edt = new Date(evt.time);
 
-	    		for (var i=0;i<data.results.length;i++) {
-	    			var evt = data.results[i];
-	    			var title = evt.name;
-	    			var tt = ticks - mins(30);
-	    			var wt = ticks + days(7);
-	    			if (evt.time > tt && evt.time <= wt) {
-	    				var edt = new Date(evt.time);
+		    				if (curr != ("" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear())) {
+		    					var dtp = edt.toString().split(" ");
+								var dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
+		    					$("#events").append("<div class='date'>" + dts + "</div>")
+		    					curr = "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear();
+		    				}
 
-	    				if (curr != ("" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear())) {
-	    					var dtp = edt.toString().split(" ");
-							var dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
-	    					$("#events").append("<div class='date'>" + dts + "</div>")
-	    					curr = "" + edt.getMonth() + "" + edt.getDate() + "" + edt.getFullYear();
-	    				}
-
-	    				var h = edt.getHours();
-	    				var ap = (h < 12) ? "am" : "pm";
-	    				h = (h > 12) ? h-12 : h;
-	    				var m = edt.getMinutes();
-	    				m = (m < 10) ? "0" + m : m;
-	    				var ts = h + ":" + m + " " + ap;
-	    				
-	    				$("#events").append("<div class='event clearfix'><div class='evt_time'>" + ts + "</div><div class='evt_name'>" + title + "</div></div>");
-	    			}
-	    		}
+		    				var h = edt.getHours();
+		    				var ap = (h < 12) ? "am" : "pm";
+		    				h = (h > 12) ? h-12 : h;
+		    				var m = edt.getMinutes();
+		    				m = (m < 10) ? "0" + m : m;
+		    				var ts = h + ":" + m + " " + ap;
+		    				
+		    				$("#events").append("<div class='event clearfix'><div class='evt_time'>" + ts + "</div><div class='evt_name'>" + title + "</div></div>");
+		    			}
+		    		}
+    			});
 	    	}
 	    },
 	    error: function(error, foo) {
