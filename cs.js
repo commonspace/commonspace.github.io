@@ -16,6 +16,7 @@ function loadEvents(){
 	    	var curr = "";
 	    	if (data && data.results && data.results.length > 0) {
     			$("#events .event, #events .date").fadeOut("slow", function(){ 
+  					debugger;
     				$("#events .event, #events .date").remove(); 
     				for (var i=0;i<data.results.length;i++) {
 		    			var evt = data.results[i];
