@@ -134,6 +134,11 @@ body {
 	margin-top:20px;
 }
 
+.title table td {
+    padding-right: 20px;
+    font-sze: .9em;
+}
+
 .clearfix:after {
    content: " "; /* Older browser do not support empty content */
    visibility: hidden;
