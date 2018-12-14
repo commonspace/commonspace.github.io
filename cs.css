@@ -133,6 +133,10 @@ body {
 .tenant .name .title .line {
 	margin-top:20px;
 }
+.tenant .name .title.floor3 {
+	font-size:26px !important;
+	line-height:26px !important;
+}
 
 .title table td {
     padding-right: 20px;
