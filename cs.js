@@ -56,7 +56,7 @@ function setDate() {
 	var dtp = dts.split(" ");
 	dts = dtp[0] + ", " + dtp[1] + " " + dtp[2];
 	$("#header #dt").html(dts);
-	loadEvents();
+	//loadEvents();
 }
 
 function init(){
