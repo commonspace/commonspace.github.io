@@ -165,10 +165,9 @@ body {
 }
 
 #right {
-	height: 770px;
+    height: 770px;
     overflow: hidden;
     box-sizing: border-box;
-    margin-top: 30px;
     margin-left: 0px;
 }
 
